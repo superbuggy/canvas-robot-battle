@@ -1,0 +1,28 @@
+main {
+  background-color: black;
+  margin: 0 auto;
+  max-width: 750px;
+  min-height: 500px;
+  padding: 0px;
+  border: 1px solid black;
+  display: flex;
+}
+
+main > * {
+  margin: 25px;
+  display: inline-flex;
+  border: 1px solid black;
+}
+
+#canvas {
+  background-color: white;
+  width: 450px;
+  height: 450px;
+}
+
+
+#menu {
+  background-color: lightgrey;
+  min-height: 450px;
+  min-width: 200px;
+}
