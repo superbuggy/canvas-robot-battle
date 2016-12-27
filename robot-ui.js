@@ -18,8 +18,8 @@ class RobotUi extends Robot {
     this.gunRdns = this.gunHdn * (Math.PI/180);
     this.gunRdns = Math.round(this.gunRdns * 1000) / 1000
     console.log(Math.sin(this.gunRdns), Math.cos(this.gunRdns));
-    this.turretEndX = this.xPos + Math.sin(this.gunRdns) * this.gunLength;
-    this.turretEndY = this.yPos + Math.cos(this.gunRdns) * this.gunLength;
+    this.turretEndX = Math.round(this.xPos + Math.sin(this.gunRdns) * this.gunLength);
+    this.turretEndY = Math.round(this.yPos + Math.cos(this.gunRdns) * this.gunLength);
     console.log(this.turretEndX, this.turretEndY);
     this.render()
   }
@@ -45,5 +45,30 @@ class RobotUi extends Robot {
     context.lineTo(self.turretEndX, self.turretEndY);
     console.log(self.turretEndX, self.turretEndY);
     context.stroke();
+  }
+  unrender(){
+    var self = this;
+
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    context.beginPath();
+    context.arc(self.xPos, self.yPos, self.radius, 0, 2 * Math.PI);
+    context.lineWidth = 4;
+    context.strokeStyle = '#FFFFFF';
+    context.stroke();
+    context.beginPath();
+    context.moveTo(self.xPos, self.yPos);
+    context.lineWidth = 4;
+    context.strokeStyle = '#FFFFFF';
+    context.lineTo(self.turretEndX, self.turretEndY);
+    context.stroke();
+  }
+  move(x,y){
+    this.unrender();
+    this.xPos += x;
+    this.yPos += y;
+    this.turretEndX += x;
+    this.turretEndY += y;
+    this.render();
   }
 }
