@@ -5,12 +5,11 @@ class Robot {
       this.energy = 150;
       this.shield = 0;
       this.hp = 100;
-      this.heading = null;
-      this.speed = 0;
-      this.turretHeading = 0;
-  }
-  move(heading, speed){
-    this.heading = heading;
-    this.speed = speed;
+
+      this.speed = 8;
+      this.maxSpeed = 64;
+      this.heading = 0;
+      this.gunDegs = 0;
+      this.gunRads = 0;
   }
 }

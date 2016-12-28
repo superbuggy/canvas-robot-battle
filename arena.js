@@ -1,12 +1,17 @@
 class Arena {
   constructor(){
     this.canvas = document.getElementById('canvas');
-    this.sidebar = document.getElementById('sidebruh');
+    this.sidebar = document.getElementById('sub');
     this.context = canvas.getContext('2d');
     this.canvas.width = 450;
     this.canvas.height = 450;
     this.centerX = this.canvas.width / 2;
     this.centerY = this.canvas.height / 2;
+    this.timer = 0;
+    this.timerId = setInterval(_=>{
+      this.timer+=1;
+      document.getElementById("timer").innerHTML= this.timer ;
+    },125)
   }
 }
 var bob;
@@ -14,17 +19,15 @@ var GameArena;
 window.onload = function(){
   GameArena = new Arena();
   bob = new RobotUi();
-  console.log(bob);
   window.addEventListener("keydown", function(evt){
-    console.log(evt.code);
     if (evt.code == "ArrowUp"){
-      bob.move(0,-2)
+      bob.move(270)
     } else if (evt.code == "ArrowDown"){
-      bob.move(0,2)
+      bob.move(90)
     } else if (evt.code == "ArrowLeft"){
-      bob.move(-2,0)
+      bob.move(180)
     } else if (evt.code == "ArrowRight"){
-      bob.move(2,0)
+      bob.move(0)
     }
   })
   GameArena.canvas.addEventListener("mousemove", function(evt){
