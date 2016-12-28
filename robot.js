@@ -7,7 +7,7 @@ class Robot {
       this.hp = 100;
       this.heading = null;
       this.speed = 0;
-      this.turretHeading = 270;
+      this.turretHeading = 0;
   }
   move(heading, speed){
     this.heading = heading;
