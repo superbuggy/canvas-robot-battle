@@ -19,14 +19,18 @@ var GameArena;
 window.onload = function(){
   GameArena = new Arena();
   bob = new RobotUi();
+  window.addEventListener("click", _=>{
+    bob.fire(222)
+  });
   window.addEventListener("keydown", function(evt){
-    if (evt.code == "ArrowUp"){
+    console.log(evt.code);
+    if (evt.code == "KeyW"){
       bob.move(270)
-    } else if (evt.code == "ArrowDown"){
+    } else if (evt.code == "KeyS"){
       bob.move(90)
-    } else if (evt.code == "ArrowLeft"){
+    } else if (evt.code == "KeyA"){
       bob.move(180)
-    } else if (evt.code == "ArrowRight"){
+    } else if (evt.code == "KeyD"){
       bob.move(0)
     }
   })

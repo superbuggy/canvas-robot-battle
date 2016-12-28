@@ -8,6 +8,7 @@ class Robot {
 
       this.speed = 8;
       this.maxSpeed = 64;
+      this.maxShots = 8;
       this.heading = 0;
       this.gunDegs = 0;
       this.gunRads = 0;

@@ -34,8 +34,8 @@ class RobotUi extends Robot {
       let pixelPerFrame = this.speed/8;
       let rads = degreesToRadians(heading);
       rads = Math.round(rads * 1000) / 1000
-      let x = Math.round(Math.round(Math.cos(rads)) * 100 * pixelPerFrame)/100
-      let y = Math.round(Math.round(Math.sin(rads)) * 100 * pixelPerFrame)/100
+      let x = .01 * Math.round(Math.cos(rads)) * 100 * pixelPerFrame
+      let y = .01 * Math.round(Math.sin(rads)) * 100 * pixelPerFrame
       this.xPos += x;
       this.yPos += y;
       this.turretEndX += x;
@@ -64,6 +64,31 @@ class RobotUi extends Robot {
     this.gunDegs = deg;
     this.unrender();
     this.render();
+  }
+  fire(energy){
+    let bulletRadius = 4;
+    let pixelPerFrame = 16;
+    let rads = degreesToRadians(this.gunDegs);
+    rads = Math.round(rads * 1000) / 1000
+    let bulletX = this.turretEndX+bulletRadius
+    let bulletY = this.turretEndY+bulletRadius
+    setInterval(_=>{
+      //erase
+      this.context.beginPath();
+      this.context.arc(bulletX, bulletY, bulletRadius, 0, 2 * Math.PI);
+      this.context.lineWidth = bulletRadius*4;
+      this.context.fillStyle = '#ffffff';
+      this.context.fill();
+      this.context.closePath();
+      bulletX += .01 * Math.round(Math.cos(rads)) * 100 * pixelPerFrame
+      bulletY += .01 * Math.round(Math.sin(rads)) * 100 * pixelPerFrame
+      this.context.beginPath();
+      this.context.arc(bulletX, bulletY, bulletRadius, 0, 2 * Math.PI);
+      this.context.lineWidth = bulletRadius;
+      this.context.fillStyle = '#AA0000';
+      this.context.fill();
+      this.context.closePath();
+    },125)
   }
 
   render(){
