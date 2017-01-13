@@ -41,7 +41,7 @@ window.onload = function(){
     let degs = Math.round( radiansToDegrees(Math.atan2(yDiff, xDiff)) );
     degs < 0 ? degs+=360 : "";
     dist = Math.round(dist)
-    GameArena.sidebar.innerHTML = `X: ${evt.layerX} <br>  Y: ${evt.layerY} <br> xDiff: ${xDiff} <br> yDiff: ${yDiff} <br> Distance: ${dist} <br> ${degs}°`;
+    GameArena.sidebar.innerHTML = `MouseX: ${evt.layerX} <br>  MouseY: ${evt.layerY} <br> xDiff: ${xDiff} <br> yDiff: ${yDiff} <br> Distance: ${dist} <br> ${degs}°`;
     bob.aim(degs)
   })
 }

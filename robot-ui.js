@@ -26,7 +26,7 @@ class RobotUi extends Robot {
       } else {
         this.heading=heading;
         this.speed-=16;
-        this.speed < 0 ? this.speed=0: "";
+        this.speed < 0 ? this.speed = 0 : "";
       }
     }
     this.motionTimer = setInterval(_=>{
@@ -34,8 +34,8 @@ class RobotUi extends Robot {
       let pixelPerFrame = this.speed/8;
       let rads = degreesToRadians(heading);
       rads = Math.round(rads * 1000) / 1000
-      let x = .01 * Math.round(Math.cos(rads)) * 100 * pixelPerFrame
-      let y = .01 * Math.round(Math.sin(rads)) * 100 * pixelPerFrame
+      let x = .01 * Math.round( Math.cos(rads) ) * 100 * pixelPerFrame
+      let y = .01 * Math.round( Math.sin(rads) ) * 100 * pixelPerFrame
       this.xPos += x;
       this.yPos += y;
       this.turretEndX += x;
@@ -80,8 +80,8 @@ class RobotUi extends Robot {
       this.context.fillStyle = '#ffffff';
       this.context.fill();
       this.context.closePath();
-      bulletX += .01 * Math.round(Math.cos(rads)) * 100 * pixelPerFrame
-      bulletY += .01 * Math.round(Math.sin(rads)) * 100 * pixelPerFrame
+      bulletX += .01 * (Math.cos(rads)) * 100 * pixelPerFrame
+      bulletY += .01 * (Math.sin(rads)) * 100 * pixelPerFrame
       this.context.beginPath();
       this.context.arc(bulletX, bulletY, bulletRadius, 0, 2 * Math.PI);
       this.context.lineWidth = bulletRadius;
@@ -93,7 +93,7 @@ class RobotUi extends Robot {
 
   render(){
     this.pre();
-    //circle
+    //circle aka tank body
     this.context.beginPath();
     this.context.arc(this.xPos, this.yPos, this.radius, 0, 2 * Math.PI);
     this.context.lineWidth = 3;
